@@ -1,0 +1,52 @@
+import React, { useState } from "react";
+import { PieChart, Pie, Cell, Tooltip } from "recharts";
+import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
+
+function VoteComponenta() {
+  const [upvotes, setUpvotes] = useState(1);
+  const [downvotes, setDownvotes] = useState(2);
+
+  const data = [
+    { name: "Palec nahoru", value: upvotes },
+    { name: "Palec dolů", value: downvotes },
+  ];
+
+  const COLORS = ["#0088FE", "#FF8042"];
+
+  function handleUpvote() {
+    setUpvotes((prevUpvotes) => prevUpvotes + 1);
+  }
+
+  function handleDownvote() {
+    setDownvotes((prevDownvotes) => prevDownvotes + 1);
+  }
+
+  return (
+    <div>
+      <button onClick={handleUpvote}>
+        <FaThumbsUp /> Palec nahoru
+      </button>
+      <button onClick={handleDownvote}>
+        <FaThumbsDown /> Palec dolů
+      </button>
+      <PieChart width={400} height={400}>
+        <Pie
+          dataKey="value"
+          data={data}
+          fill="#8884d8"
+          cx="50%"
+          cy="50%"
+          labelLine={false}
+          label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+        >
+          {data.map((entry, index) => (
+            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+          ))}
+        </Pie>
+        <Tooltip />
+      </PieChart>
+    </div>
+  );
+}
+
+export default VoteComponenta;
