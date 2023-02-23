@@ -1,15 +1,15 @@
 
-import VoteComponent from "./components/chartp"
-import VoteComponenta from "./components/Vote"
+// import VoteComponent from "./components/chartp"
+// import VoteComponenta from "./components/Vote"
 import VoteComponentas from "./components/VoteChart"
 
 
 const App = () => {
   return (
     <div>App
-      <VoteComponent />
+      {/* <VoteComponent /> */}
       <br />
-      <VoteComponenta />
+      {/* <VoteComponenta /> */}
       <br />
       <VoteComponentas />
     </div>
